@@ -83,7 +83,7 @@ public class HotelBookingDataGenerationController {
 		hotel = hotelDAO.findByName("BBQ");
 		hotelRoom.setHotelId(hotel.getId());
 		restTemplate.postForEntity(url, hotelRoom, String.class);
-		
+
 		hotelRoom.setNumber(2);
 		roomType = hotelRoomTypeDAO.findByRoomType("BUSINESS");
 		hotelRoom.setRoomTypeId(roomType.getId());
@@ -98,7 +98,7 @@ public class HotelBookingDataGenerationController {
 		hotelRoom.setHotelId(hotel.getId());
 		restTemplate.postForEntity(url, hotelRoom, String.class);
 		
-		url = baseUrl + "/hotel/booking";
+		/*url = baseUrl + "/hotel/booking";
 		HotelBookingRequest hotelBookingRequest = new HotelBookingRequest();
 		hotelBookingRequest.setHotelName("BBQ");
 		hotelBookingRequest.setRoomType("DELUXE");
@@ -109,6 +109,6 @@ public class HotelBookingDataGenerationController {
 		restTemplate.postForEntity(url, hotelBookingRequest, String.class);
 		
 		hotelBookingRequest.setRoomType("CORPORATE");		
-		restTemplate.postForEntity(url, hotelBookingRequest, String.class);
+		restTemplate.postForEntity(url, hotelBookingRequest, String.class);*/
 	}
 }
