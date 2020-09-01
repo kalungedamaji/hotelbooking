@@ -15,14 +15,13 @@ spring:
     console:
       enabled: true
 server:
-     port: 8092
+     port: 8091
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-  healthcheck:
-        healthcheck:
-           enabled: true
+    healthcheck:
+      enabled: true
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 1

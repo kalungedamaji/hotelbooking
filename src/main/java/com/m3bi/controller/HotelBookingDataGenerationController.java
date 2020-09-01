@@ -1,21 +1,17 @@
 package com.m3bi.controller;
 
-import java.sql.Date;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.m3bi.dao.HotelDAO;
 import com.m3bi.dao.HotelRoomTypeDAO;
 import com.m3bi.dao.UserDAO;
 import com.m3bi.model.Hotel;
-import com.m3bi.model.HotelBookingRequest;
 import com.m3bi.model.HotelRoom;
 import com.m3bi.model.RoomType;
 import com.m3bi.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class HotelBookingDataGenerationController {
@@ -28,6 +24,10 @@ public class HotelBookingDataGenerationController {
 	
 	@Autowired
 	private HotelRoomTypeDAO hotelRoomTypeDAO;
+
+
+	@Autowired
+	Environment environment;
 	
 //	@Autowired
 //	private HotelRoomDAO hotelRoomDAO;
@@ -39,7 +39,8 @@ public class HotelBookingDataGenerationController {
 	
 	@GetMapping("/hoteldata")
 	public void hotelDataGenerator() {
-		String baseUrl = "http://localhost:8091";
+		String serverPort = environment.getProperty("local.server.port");
+		String baseUrl = "http://localhost:"+serverPort;
 		String url = baseUrl + "/hotel";
 		Hotel hotel = new Hotel();
 		hotel.setName("BBQ");
